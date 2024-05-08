@@ -17,4 +17,4 @@ Primeiro projeto somativo da disciplina de Desenvolvimento para Dispositivos Mob
 
 ## Contexto da aplicação
 
-A aplicação de Pokédex que será desenvolvida permite aos usuários se cadastrar e fazer login para acessar informações detalhadas sobre os Pokémon.
+A aplicação de Pokédex desenvolvida permite aos usuários se cadastrar e fazer login por meio da persistência de dados, para que assim ele possa acessar informações detalhadas sobre os Pokémon. A exibição das informações dos pokémons é feita por maio da API PokéApi (https://pokeapi.co/)
