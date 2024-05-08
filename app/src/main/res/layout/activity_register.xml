@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".RegisterActivity">
 
     <TextView
         android:id="@+id/textViewTitle"
@@ -21,70 +21,71 @@
         app:layout_constraintVertical_bias="0.131" />
 
     <EditText
-        android:id="@+id/editTextUsernameLogin"
+        android:id="@+id/editTextUsernameRegister"
         android:layout_width="243dp"
         android:layout_height="40dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="Usuário"
         android:inputType="text"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.595"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.339"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.335" />
 
     <EditText
-        android:id="@+id/editTextPasswordLogin"
+        android:id="@+id/editTextPasswordRegister"
         android:layout_width="243dp"
         android:layout_height="40dp"
-        android:layout_marginTop="340dp"
         android:ems="10"
         android:hint="Senha"
         android:inputType="textPassword"
         android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonRegister"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.595"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.777" />
+        app:layout_constraintVertical_bias="0.767" />
 
     <Button
-        android:id="@+id/buttonLogin"
+        android:id="@+id/buttonRegister"
         android:layout_width="239dp"
         android:layout_height="48dp"
-        android:text="Login"
+        android:text="Cadastrar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.581"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.642" />
+        app:layout_constraintVertical_bias="0.617" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Não possui Cadastro?"
+        android:text="Já possui cadastro?"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.366"
+        app:layout_constraintHorizontal_bias="0.349"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.731" />
+        app:layout_constraintVertical_bias="0.703" />
 
     <TextView
-        android:id="@+id/textViewNavegationLogin"
+        android:id="@+id/textViewNavegationRegister"
         android:layout_width="80dp"
         android:layout_height="21dp"
         android:text="Clique aqui"
         android:textColor="#2196F3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.77"
+        app:layout_constraintHorizontal_bias="0.709"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.732" />
+        app:layout_constraintVertical_bias="0.705" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
