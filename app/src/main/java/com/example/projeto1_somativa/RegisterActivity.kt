@@ -10,10 +10,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.projeto1_somativa.Models.User
-import com.example.projeto1_somativa.Models.UserRepository
+import com.example.projeto1_somativa.model.User
+import com.example.projeto1_somativa.model.UserRepository
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var username : EditText;
@@ -21,7 +23,8 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var register : Button;
     private lateinit var textNavigation : TextView;
 
-    @Inject lateinit var userRepository : UserRepository;
+    @Inject
+    lateinit var userRepository : UserRepository;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +55,7 @@ class RegisterActivity : AppCompatActivity() {
 
     }
 
-    fun registerUser(){
+    private fun registerUser(){
 
         var usernameValue = username.text.toString();
         var passwordValue = password.text.toString();
@@ -73,7 +76,7 @@ class RegisterActivity : AppCompatActivity() {
 
     }
 
-    fun validation(usernameValue : String, passwordValue : String) : String {
+    private fun validation(usernameValue : String, passwordValue : String) : String {
 
         if (usernameValue.isNullOrEmpty()){
 
@@ -97,7 +100,7 @@ class RegisterActivity : AppCompatActivity() {
 
     }
 
-    fun showMessage(message : String){
+    private fun showMessage(message : String){
 
         val builder = AlertDialog.Builder(this);
 
@@ -125,7 +128,7 @@ class RegisterActivity : AppCompatActivity() {
 
     }
 
-    fun navigateToLogin(){
+    private fun navigateToLogin(){
 
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)

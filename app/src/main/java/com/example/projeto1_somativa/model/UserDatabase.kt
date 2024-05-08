@@ -1,4 +1,4 @@
-package com.example.projeto1_somativa.Models
+package com.example.projeto1_somativa.model
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

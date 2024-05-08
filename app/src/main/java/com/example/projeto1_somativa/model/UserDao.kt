@@ -1,4 +1,4 @@
-package com.example.projeto1_somativa.Models
+package com.example.projeto1_somativa.model
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -13,7 +13,7 @@ interface UserDao {
     fun insert(user : User)
 
     @Query("SELECT * FROM table_user WHERE username = :username")
-    fun getByUsername(username : String)
+    fun getByUsername(username : String) : User
 
     @Update
     fun update(user : User) : Int
