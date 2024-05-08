@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("kotlin-kapt")
 }
 
 android {
@@ -33,9 +34,38 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    //    configurando o binding
+
+    dataBinding {
+        enable = true
+    }
+
+    buildFeatures{
+        dataBinding = true
+        viewBinding = true
+    }
+
 }
 
 dependencies {
+
+    // importando a biblioteca do room
+
+    val roomVersion = "2.6.1"
+
+    implementation("androidx.room:room-runtime:$roomVersion")
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+
+    // importando bibliotecas do hilt
+
+    val hiltVersion = "2.50"
+
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
+    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
+    implementation("androidx.activity:activity-ktx:1.8.2")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
