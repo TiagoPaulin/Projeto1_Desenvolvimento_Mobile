@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ShareCompat.IntentBuilder
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
@@ -20,7 +19,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        var textViewNavegation = findViewById<TextView>(R.id.textViewNavegationLogin);
+        var textViewNavegation = findViewById<TextView>(R.id.textViewNavigationLogin);
 
         textViewNavegation.setOnClickListener {
 
