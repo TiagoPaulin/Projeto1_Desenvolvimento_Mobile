@@ -63,6 +63,9 @@ class MainActivity : AppCompatActivity() {
             password.text.clear();
             dialog.dismiss();
 
+            val intent = Intent(this, HomeActivity::class.java);
+            startActivity(intent);
+
         }
 
         val dialog = builder.create();

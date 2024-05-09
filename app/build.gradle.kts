@@ -65,11 +65,21 @@ dependencies {
 
     // importando bibliotecas do hilt
 
-    val hiltVersion = "2.50"
+//    val hiltVersion = "2.50"
+//
+//    implementation("com.google.dagger:hilt-android:$hiltVersion")
+//    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
+//    implementation("androidx.activity:activity-ktx:1.8.2")
 
-    implementation("com.google.dagger:hilt-android:$hiltVersion")
-    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
-    implementation("androidx.activity:activity-ktx:1.8.2")
+
+    // importando biblioteca do Glide
+
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
+    // importando bibliotecas do retrofit
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
