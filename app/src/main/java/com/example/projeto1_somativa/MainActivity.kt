@@ -10,20 +10,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.projeto1_somativa.model.UserRepository
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import com.example.projeto1_somativa.model.Singleton
 
-@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var username : EditText;
     private lateinit var password : EditText;
-    private lateinit var register : Button;
+    private lateinit var login : Button;
     private lateinit var textNavigation : TextView;
-
-    @Inject
-    lateinit var userRepository : UserRepository;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,9 +29,11 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        Singleton.setContext(this);
+
         username = findViewById(R.id.editTextUsernameLogin);
         password = findViewById(R.id.editTextPasswordLogin);
-        register = findViewById(R.id.buttonLogin);
+        login = findViewById(R.id.buttonLogin);
         textNavigation = findViewById(R.id.textViewNavigationLogin);
 
         textNavigation.setOnClickListener {
@@ -45,6 +41,13 @@ class MainActivity : AppCompatActivity() {
            navigateToRegister();
 
         }
+
+        login.setOnClickListener {
+
+            showMessage()
+
+        }
+
 
     }
 
@@ -73,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         var usernameValue = username.text.toString();
         var passwordValue = password.text.toString();
 
-        var user = userRepository.request(usernameValue);
+        var user = Singleton.request(usernameValue);
 
         if (user != null && user.password == passwordValue){
 

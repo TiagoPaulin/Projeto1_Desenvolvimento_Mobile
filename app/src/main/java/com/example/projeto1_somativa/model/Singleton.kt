@@ -1,8 +1,20 @@
 package com.example.projeto1_somativa.model
 
-import javax.inject.Inject
+import android.content.Context
 
-class UserRepository @Inject constructor(var dao : UserDao) {
+object Singleton {
+
+
+    private lateinit var dao: UserDao
+
+    fun setContext(context: Context){
+
+        UserDatabase.getInstance(context)?.apply {
+            dao = userDao()
+
+        }
+
+    }
 
     fun add(user: User){
 
@@ -17,7 +29,7 @@ class UserRepository @Inject constructor(var dao : UserDao) {
     }
 
     fun update(user: User){
-        
+
         dao.update(user)
 
     }
