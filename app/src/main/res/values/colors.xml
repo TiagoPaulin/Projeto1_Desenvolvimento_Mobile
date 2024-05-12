@@ -5,4 +5,7 @@
     <color name="red_background">#A62A2A</color>
     <color name="blue_button">#0D47A1</color>
     <color name="link_color">#2196F3</color>
+    <color name="gradient_green">#6bdc45</color>
+    <color name="gradient_blue">#6ab7f5</color>
+    <color name="gray">#2C2D2E</color>
 </resources>

@@ -30,4 +30,21 @@
         <item name="android:backgroundTint">@color/blue_button</item>
     </style>
 
+    <style name="box_image">
+        <item name="android:background">@drawable/box_image</item>
+        <item name="android:layout_margin">20dp</item>
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">250dp</item>
+    </style>
+
+    <style name="box_pokemon">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/box_pokemon</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+    </style>
+
 </resources>
