@@ -5,62 +5,53 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backround"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textViewTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pokédex"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/logo_pokemon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.131" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/boxForm"
+        style="@style/box_form"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
         android:id="@+id/editTextUsernameLogin"
-        android:layout_width="243dp"
-        android:layout_height="40dp"
-        android:ems="10"
+        style="@style/edit_text"
         android:hint="Usuário"
         android:inputType="text"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.339"
-        android:autofillHints="" />
+        app:layout_constraintStart_toStartOf="@+id/boxForm"
+        app:layout_constraintEnd_toEndOf="@+id/boxForm"
+        app:layout_constraintTop_toTopOf="@+id/boxForm" />
 
     <EditText
         android:id="@+id/editTextPasswordLogin"
-        android:layout_width="243dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="340dp"
-        android:ems="10"
+        style="@style/edit_text"
         android:hint="Senha"
         android:inputType="textPassword"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.777" />
+        app:layout_constraintEnd_toEndOf="@+id/boxForm"
+        app:layout_constraintStart_toStartOf="@+id/boxForm"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUsernameLogin" />
 
     <Button
         android:id="@+id/buttonLogin"
-        android:layout_width="239dp"
-        android:layout_height="48dp"
+        style="@style/button"
+        android:backgroundTint="@color/blue_button"
         android:text="Login"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.642" />
+        app:layout_constraintTop_toBottomOf="@+id/boxForm" />
 
     <TextView
         android:id="@+id/textView2"
@@ -69,10 +60,10 @@
         android:text="Não possui Cadastro?"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.366"
+        app:layout_constraintHorizontal_bias="0.344"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.731" />
+        app:layout_constraintVertical_bias="0.79" />
 
     <TextView
         android:id="@+id/textViewNavigationLogin"
@@ -82,9 +73,9 @@
         android:textColor="#2196F3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.77"
+        app:layout_constraintHorizontal_bias="0.767"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.732" />
+        app:layout_constraintVertical_bias="0.792" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
