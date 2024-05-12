@@ -4,6 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red_background">#A23535</color>
     <color name="blue_button">#0D47A1</color>
-    <color name="blue_background"> #A3C1DA</color>
-    <color name="border_color">#BECEDE</color>
+    <color name="link_color">#2196F3</color>
 </resources>
