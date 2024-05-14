@@ -12,4 +12,10 @@ interface PokeApi {
     @GET
     suspend fun getPokemon(@Url url : String) : ResponseBody
 
+    @GET
+    suspend fun getPokemonType(@Url url : String) : ResponseBody
+
+    @GET
+    suspend fun getPokemonDescription(@Url url : String) : ResponseBody
+
 }

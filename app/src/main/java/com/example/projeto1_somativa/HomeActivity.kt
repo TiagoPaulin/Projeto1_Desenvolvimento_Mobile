@@ -66,13 +66,40 @@ class HomeActivity : AppCompatActivity() {
 
     private suspend fun getPokemonInfo(api : PokeApi, url : String) : Pokemon {
 
-        val responseBody = api.getPokemon(url)
-        val body = responseBody.string()
+        val responseBodyPokemon = api.getPokemon(url)
+        val bodyPokemon = responseBodyPokemon.string()
 
-        val name = JSONObject(body).getJSONArray("forms").getJSONObject(0).getString("name")
-        val imageUrl = JSONObject(body).getJSONObject("sprites").getString("front_default")
+        val name = JSONObject(bodyPokemon).getJSONArray("forms").getJSONObject(0).getString("name")
+        val imageUrl = JSONObject(bodyPokemon).getJSONObject("sprites").getString("front_default")
 
-        return Pokemon(name, imageUrl)
+        val responseBodyPokemonType = api.getPokemonType("https://pokeapi.co/api/v2/pokemon/" + name)
+        val bodyPokemonType = responseBodyPokemonType.string()
+
+        val typesArray = JSONObject(bodyPokemonType).getJSONArray("types")
+        val typeStringBuilder = StringBuilder()
+
+        for (i in 0 until typesArray.length()) {
+
+            val typeName = typesArray.getJSONObject(i).getJSONObject("type").getString("name")
+            typeStringBuilder.append(typeName)
+
+            if (i < typesArray.length() - 1) {
+                typeStringBuilder.append(" | ")
+            }
+
+        }
+
+        val type = typeStringBuilder.toString()
+        val urlDescription = JSONObject(bodyPokemonType).getJSONObject("species").getString("url")
+
+        val responseBodyPokemonDescription = api.getPokemonDescription(urlDescription)
+        val bodyPokemonDescription = responseBodyPokemonDescription.string()
+
+        val color = JSONObject(bodyPokemonDescription).getJSONObject("color").getString("name")
+        val description = JSONObject(bodyPokemonDescription).getJSONArray("flavor_text_entries").getJSONObject(0).getString("flavor_text")
+
+        return Pokemon(name, type, color, description, imageUrl)
+
     }
 
     private fun requestApi(){

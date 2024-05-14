@@ -25,7 +25,7 @@ class PokemonDetails : AppCompatActivity() {
         // Verificar se o Pokemon não é nulo antes de usar
         if (pokemon != null) {
             // Agora você pode usar o objeto Pokemon como quiser
-            findViewById<TextView>(R.id.nome).text = pokemon.name
+            findViewById<TextView>(R.id.nome).text = pokemon.name + " " + pokemon.type + " " + pokemon.color + " " + pokemon.description
         }
     }
 }
