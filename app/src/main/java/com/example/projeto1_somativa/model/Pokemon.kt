@@ -6,6 +6,7 @@ data class Pokemon(
     val name : String,
     val type : String,
     val color : String,
+    val captureRate : String,
     val description : String,
     val imageUrl : String
 ) : Serializable

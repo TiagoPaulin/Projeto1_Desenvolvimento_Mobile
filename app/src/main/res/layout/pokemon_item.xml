@@ -10,7 +10,6 @@
     <ImageView
         android:id="@+id/imageViewPokemon"
         style="@style/box_image"
-        android:src="@drawable/logo_pokemon"
         android:layout_gravity="center"/>
 
     <TextView
