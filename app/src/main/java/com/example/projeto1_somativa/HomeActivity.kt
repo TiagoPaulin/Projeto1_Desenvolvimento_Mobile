@@ -5,6 +5,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projeto1_somativa.databinding.ActivityHomeBinding
 import com.example.projeto1_somativa.model.Pokemon
@@ -37,7 +38,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val recyclerView = binding.recyclerViewPokemon
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = GridLayoutManager(this, 2);
         recyclerView.setHasFixedSize(true)
 
         pokemonAdapter = PokemonAdapter(this, pokemonList)
