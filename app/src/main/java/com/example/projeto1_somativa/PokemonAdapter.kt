@@ -1,6 +1,7 @@
 package com.example.projeto1_somativa
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,18 @@ class PokemonAdapter(private val context : Context, private val pokemonList : Mu
     inner class PokemonViewHolder(binding : PokemonItemBinding) : RecyclerView.ViewHolder(binding.root) {
         val pokemonName = binding.textViewPokemonName
         val pokemonImage = binding.imageViewPokemon
+
+        init {
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val pokemon = pokemonList[position]
+                    val intent = Intent(context, PokemonDetails::class.java)
+                    intent.putExtra("pokemon", pokemon)
+                    context.startActivity(intent)
+                }
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonViewHolder {
