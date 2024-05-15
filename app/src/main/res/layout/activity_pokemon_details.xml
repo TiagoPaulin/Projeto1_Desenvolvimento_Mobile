@@ -8,11 +8,14 @@
     android:background="@drawable/backround"
     tools:context=".PokemonDetails">
 
+
     <View
         android:id="@+id/view"
         style="@style/view_pokemon_details"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/pokemonImage"
@@ -25,40 +28,41 @@
         android:id="@+id/pokemonName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="0dp"
         android:text="pokemonName"
         android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/view2"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/pokemonImage" />
+        app:layout_constraintTop_toBottomOf="@+id/pokemonImage"
+        app:layout_constraintVertical_bias="0.155" />
 
     <TextView
         android:id="@+id/pokemonType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="0dp"
         android:text="Type: "
         android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/pokemonImage" />
+        app:layout_constraintTop_toBottomOf="@+id/pokemonImage"
+        app:layout_constraintVertical_bias="0.155" />
 
     <View
         android:id="@+id/view2"
         style="@style/view_info_pokemon"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintStart_toStartOf="@+id/view" />
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toBottomOf="@+id/pokemonName" />
 
     <TextView
         android:id="@+id/pokemonColor"
@@ -68,9 +72,9 @@
         android:textColor="@color/black"
         android:textSize="19dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginRight="0dp"
         android:layout_marginTop="25dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="0dp"
         app:layout_constraintStart_toStartOf="@+id/view2"
         app:layout_constraintTop_toTopOf="@+id/view2" />
 
@@ -81,10 +85,10 @@
         android:text="Capture Rate: "
         android:textColor="@color/black"
         android:textSize="19dp"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="0dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="25dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="0dp"
         app:layout_constraintEnd_toEndOf="@+id/view2"
         app:layout_constraintTop_toTopOf="@+id/view2" />
 
@@ -96,9 +100,9 @@
         android:textColor="@color/black"
         android:textSize="19dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="25dp"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="@+id/view2"
         app:layout_constraintStart_toStartOf="@+id/view2"
