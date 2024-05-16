@@ -44,7 +44,15 @@ class MainActivity : AppCompatActivity() {
 
         login.setOnClickListener {
 
-            showMessage()
+            if(loginUser()){
+
+                navigateToHome();
+
+            } else {
+
+                showMessage();
+
+            }
 
         }
 
@@ -56,15 +64,12 @@ class MainActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this);
 
         builder.setTitle("MENSAGEM");
-        builder.setMessage(loginUser());
+        builder.setMessage("Usuário ou senha inválidos");
         builder.setPositiveButton("OK") { dialog, _ ->
 
             username.text.clear();
             password.text.clear();
             dialog.dismiss();
-
-            val intent = Intent(this, HomeActivity::class.java);
-            startActivity(intent);
 
         }
 
@@ -74,7 +79,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun loginUser() : String{
+    private fun loginUser() : Boolean{
 
         var usernameValue = username.text.toString();
         var passwordValue = password.text.toString();
@@ -83,17 +88,25 @@ class MainActivity : AppCompatActivity() {
 
         if (user != null && user.password == passwordValue){
 
-            return "Login válido!";
+            return true;
 
         }
 
-        return "Usuário ou senha incorretos";
+        return false;
 
     }
 
     private fun navigateToRegister(){
 
         val intent = Intent(this, RegisterActivity::class.java);
+        startActivity(intent);
+
+    }
+
+
+    private fun navigateToHome(){
+
+        val intent = Intent(this, HomeActivity::class.java);
         startActivity(intent);
 
     }
