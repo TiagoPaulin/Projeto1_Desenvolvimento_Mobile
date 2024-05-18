@@ -76,4 +76,14 @@
         <item name="android:layout_marginBottom">15dp</item>
     </style>
 
+    <style name="view_pokemon_description">
+        <item name="android:layout_height">175dp</item>
+        <item name="android:layout_width">330dp</item>
+        <item name="android:background">@drawable/description_background</item>
+        <item name="android:layout_marginTop">35dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_marginBottom">25dp</item>
+    </style>
+
 </resources>
