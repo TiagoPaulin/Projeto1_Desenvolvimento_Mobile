@@ -4,39 +4,53 @@ import android.content.Context
 
 object Singleton {
 
+    var pokemons : MutableList<PokemonData> = mutableListOf()
 
-    private lateinit var dao: UserDao
+    private lateinit var userDao : UserDao
+    private lateinit var pokemonDao : PokemonDao
 
     fun setContext(context: Context){
 
-        UserDatabase.getInstance(context)?.apply {
-            dao = userDao()
+        AppDatabase.getInstance(context)?.apply {
+
+            userDao = userDao()
+            pokemonDao = pokemonDao()
+
+            pokemons.addAll(pokemonDao.getAll())
 
         }
 
     }
 
-    fun add(user: User){
+    fun addUser(user: User){
 
-        dao.insert(user);
-
-    }
-
-    fun request(username : String) : User {
-
-        return dao.getByUsername(username)
+        userDao.insert(user);
 
     }
 
-    fun update(user: User){
+    fun requestUser(username : String) : User {
 
-        dao.update(user)
+        return userDao.getByUsername(username)
 
     }
 
-    fun delete(user: User){
+    fun addPokemon(pokemon : PokemonData){
 
-        dao.delete(user)
+        pokemonDao.insert(pokemon)
+        pokemons.addAll(pokemonDao.getAll())
+
+    }
+
+    fun deletePokemon(pokemon : PokemonData){
+
+        pokemonDao.delete(pokemon)
+        pokemons.addAll(pokemonDao.getAll())
+
+    }
+
+    fun requestPokemon(name : String){
+
+        pokemonDao.getByName(name)
 
     }
 

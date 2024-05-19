@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
         var usernameValue = username.text.toString();
         var passwordValue = password.text.toString();
 
-        var user = Singleton.request(usernameValue);
+        var user = Singleton.requestUser(usernameValue);
 
         if (user != null && user.password == passwordValue){
 

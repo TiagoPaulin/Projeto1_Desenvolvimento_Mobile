@@ -61,7 +61,7 @@ class RegisterActivity : AppCompatActivity() {
 
             showMessage(message)
 
-            Singleton.add(User(0, usernameValue, passwordValue))
+            Singleton.addUser(User(0, usernameValue, passwordValue))
 
         } else {
 

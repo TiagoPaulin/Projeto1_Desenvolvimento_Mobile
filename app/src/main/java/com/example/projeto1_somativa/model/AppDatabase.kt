@@ -5,22 +5,23 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [User::class], version = 1)
-abstract class UserDatabase : RoomDatabase() {
+@Database(entities = [User::class, PokemonData::class], version = 1)
+abstract class AppDatabase : RoomDatabase() {
 
     abstract fun userDao() : UserDao
+    abstract fun pokemonDao() : PokemonDao
 
     companion object{
-        private var instance: UserDatabase? = null
-        fun getInstance(context: Context): UserDatabase?{
+        private var instance: AppDatabase? = null
+        fun getInstance(context: Context): AppDatabase?{
 
             if (instance == null){
 
-                synchronized(UserDatabase::class){
+                synchronized(AppDatabase::class){
                     instance = Room.databaseBuilder(
                         context.applicationContext,
-                        UserDatabase::class.java,
-                        "users.sqlite"
+                        AppDatabase::class.java,
+                        "app_data.sqlite"
                     )
                         .allowMainThreadQueries()
                         .build()
