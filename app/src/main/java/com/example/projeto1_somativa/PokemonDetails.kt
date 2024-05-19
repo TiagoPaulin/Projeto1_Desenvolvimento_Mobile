@@ -24,7 +24,7 @@ class PokemonDetails : AppCompatActivity() {
 
         if (position != -1) {
 
-            val pokemon = Singleton.pokemonsData[position]
+            val pokemon = Singleton.pokemonsRequest[position]
 
             Glide.with(this)
                 .load(pokemon.imageUrl)

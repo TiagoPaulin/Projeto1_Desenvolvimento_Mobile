@@ -17,12 +17,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <Button
+        android:id="@+id/buttonHome"
+        style="@style/detail_button"
+        android:text="Home"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view" />
+
+    <Button
+        android:id="@+id/buttonSave"
+        style="@style/detail_button"
+        android:text="Save"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view" />
+
     <ImageView
         android:id="@+id/pokemonImage"
         style="@style/image_pokemon_details"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toTopOf="@+id/view"/>
+        app:layout_constraintTop_toBottomOf="@+id/buttonHome" />
 
     <TextView
         android:id="@+id/pokemonName"
@@ -30,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="5dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="0dp"
         android:text="pokemonName"
         android:textColor="@color/white"
@@ -46,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="0dp"
         android:text="Type: "
         android:textColor="@color/white"
@@ -73,7 +89,7 @@
         android:textSize="19dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="0dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="0dp"
         app:layout_constraintStart_toStartOf="@+id/view2"
         app:layout_constraintTop_toTopOf="@+id/view2" />
@@ -87,7 +103,7 @@
         android:textSize="19dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="0dp"
         app:layout_constraintEnd_toEndOf="@+id/view2"
         app:layout_constraintTop_toTopOf="@+id/view2" />
@@ -95,7 +111,6 @@
     <View
         android:id="@+id/viewDescription"
         style="@style/view_pokemon_description"
-        app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="@+id/view2"
         app:layout_constraintStart_toStartOf="@+id/view2"
         app:layout_constraintTop_toBottomOf="@+id/pokemonColor" />
@@ -105,9 +120,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="70dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="70dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
         android:text="Description: "
         android:textColor="@color/black"
         android:textSize="19dp"
@@ -117,5 +132,21 @@
         app:layout_constraintStart_toStartOf="@+id/viewDescription"
         app:layout_constraintTop_toTopOf="@+id/viewDescription"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/buttonBack"
+        style="@style/nav_button"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/viewDescription" />
+
+    <Button
+        android:id="@+id/buttonNext"
+        style="@style/nav_button"
+        android:text="Next"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/viewDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
