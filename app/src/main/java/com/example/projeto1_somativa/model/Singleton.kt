@@ -4,7 +4,8 @@ import android.content.Context
 
 object Singleton {
 
-    var pokemons : MutableList<PokemonData> = mutableListOf()
+    var pokemonsData : MutableList<Pokemon> = mutableListOf()
+    var pokemonsRequest : MutableList<Pokemon> = mutableListOf()
 
     private lateinit var userDao : UserDao
     private lateinit var pokemonDao : PokemonDao
@@ -16,7 +17,7 @@ object Singleton {
             userDao = userDao()
             pokemonDao = pokemonDao()
 
-            pokemons.addAll(pokemonDao.getAll())
+            pokemonsData = pokemonDao.getAll()
 
         }
 
@@ -34,23 +35,17 @@ object Singleton {
 
     }
 
-    fun addPokemon(pokemon : PokemonData){
+    fun addPokemon(pokemon : Pokemon){
 
         pokemonDao.insert(pokemon)
-        pokemons.addAll(pokemonDao.getAll())
+        pokemonsData = pokemonDao.getAll()
 
     }
 
-    fun deletePokemon(pokemon : PokemonData){
+    fun deletePokemon(pokemon : Pokemon){
 
         pokemonDao.delete(pokemon)
-        pokemons.addAll(pokemonDao.getAll())
-
-    }
-
-    fun requestPokemon(name : String){
-
-        pokemonDao.getByName(name)
+        pokemonsData = pokemonDao.getAll()
 
     }
 

@@ -19,12 +19,11 @@ class PokemonAdapter(private val context : Context, private val pokemonList : Mu
         init {
             itemView.setOnClickListener {
                 val position = adapterPosition
-                if (position != RecyclerView.NO_POSITION) {
-                    val pokemon = pokemonList[position]
-                    val intent = Intent(context, PokemonDetails::class.java)
-                    intent.putExtra("pokemon", pokemon)
-                    context.startActivity(intent)
-                }
+
+                val intent = Intent(context, PokemonDetails::class.java)
+                intent.putExtra("position", position)
+                context.startActivity(intent)
+
             }
         }
     }

@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
-import com.example.projeto1_somativa.model.Pokemon
+import com.example.projeto1_somativa.model.Singleton
 
 class PokemonDetails : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,9 +20,11 @@ class PokemonDetails : AppCompatActivity() {
             insets
         }
 
-        val pokemon: Pokemon? = intent.getSerializableExtra("pokemon") as? Pokemon
+        val position = intent.getIntExtra("position", -1)
 
-        if (pokemon != null) {
+        if (position != -1) {
+
+            val pokemon = Singleton.pokemonsData[position]
 
             Glide.with(this)
                 .load(pokemon.imageUrl)

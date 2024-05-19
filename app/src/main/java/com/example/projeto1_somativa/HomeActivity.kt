@@ -6,9 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projeto1_somativa.databinding.ActivityHomeBinding
 import com.example.projeto1_somativa.model.Pokemon
+import com.example.projeto1_somativa.model.Singleton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,7 +20,6 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityHomeBinding
     private lateinit var pokemonAdapter: PokemonAdapter
-    private val pokemonList : MutableList<Pokemon> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +40,7 @@ class HomeActivity : AppCompatActivity() {
         recyclerView.layoutManager = GridLayoutManager(this, 2);
         recyclerView.setHasFixedSize(true)
 
-        pokemonAdapter = PokemonAdapter(this, pokemonList)
+        pokemonAdapter = PokemonAdapter(this, Singleton.pokemonsRequest)
         recyclerView.adapter = pokemonAdapter
 
     }
@@ -119,7 +118,7 @@ class HomeActivity : AppCompatActivity() {
                 val pokemon = getPokemonInfo(api, url)
                 pokemons.add(pokemon)
             }
-            pokemonList.addAll(pokemons)
+            Singleton.pokemonsRequest.addAll(pokemons)
             pokemonAdapter.notifyDataSetChanged()
         }
     }
