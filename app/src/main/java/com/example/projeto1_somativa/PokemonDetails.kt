@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
+import com.example.projeto1_somativa.model.Pokemon
 import com.example.projeto1_somativa.model.Singleton
 
 class PokemonDetails : AppCompatActivity() {
@@ -23,6 +24,7 @@ class PokemonDetails : AppCompatActivity() {
 
     private lateinit var homeButton : Button
     private lateinit var saveButton : Button
+    private lateinit var deleteButton : Button
     private lateinit var backButton : Button
     private lateinit var nextButton : Button
 
@@ -47,31 +49,52 @@ class PokemonDetails : AppCompatActivity() {
 
         homeButton = findViewById(R.id.buttonHome)
         saveButton = findViewById(R.id.buttonSave)
+        deleteButton = findViewById(R.id.buttonDelete)
         backButton = findViewById(R.id.buttonBack)
         nextButton = findViewById(R.id.buttonNext)
 
         position = intent.getIntExtra("position", -1)
 
-        loadData(position)
+        var pokemon = Singleton.pokemonsRequest[position]
+
+        loadData(pokemon)
+
+        saveButton.setOnClickListener {
+
+            pokemon.saved = true
+            Singleton.addPokemon(pokemon)
+            buttonVisibility(pokemon)
+
+        }
+
+        deleteButton.setOnClickListener {
+
+            Singleton.deletePokemon(pokemon)
+            pokemon.saved = false
+            buttonVisibility(pokemon)
+
+        }
 
         backButton.setOnClickListener {
 
-            buttonVisibility()
             position = position - 1
-            loadData(position)
+            pokemon = Singleton.pokemonsRequest[position]
+            buttonVisibility(pokemon)
+            loadData(pokemon)
 
         }
 
         nextButton.setOnClickListener {
 
-            buttonVisibility()
             position = position + 1
-            loadData(position)
+            pokemon = Singleton.pokemonsRequest[position]
+            buttonVisibility(pokemon)
+            loadData(pokemon)
 
         }
     }
 
-    private fun buttonVisibility(){
+    private fun buttonVisibility(pokemon : Pokemon){
 
         if (position == 0) {
 
@@ -88,29 +111,33 @@ class PokemonDetails : AppCompatActivity() {
 
         }
 
-    }
+        if (pokemon.saved) {
 
-    private fun loadData(position : Int) {
+            saveButton.visibility = View.INVISIBLE
+            deleteButton.visibility = View.VISIBLE
 
-        if (position != -1) {
+        } else {
 
-            buttonVisibility()
-
-            val pokemon = Singleton.pokemonsRequest[position]
-
-            Glide.with(this)
-                .load(pokemon.imageUrl)
-                .into(image)
-            name.text = "Name: " + pokemon.name
-            type.text = "Type: " + pokemon.type
-            color.text = "Color: " + pokemon.color
-            captureRate.text = "CaptureRate: " + pokemon.captureRate
-            description.text = "Description: \n" + pokemon.description
+            saveButton.visibility = View.VISIBLE
+            deleteButton.visibility = View.INVISIBLE
 
         }
 
     }
 
+    private fun loadData(pokemon : Pokemon) {
 
+        buttonVisibility(pokemon)
+
+        Glide.with(this)
+            .load(pokemon.imageUrl)
+            .into(image)
+        name.text = "Name: " + pokemon.name
+        type.text = "Type: " + pokemon.type
+        color.text = "Color: " + pokemon.color
+        captureRate.text = "CaptureRate: " + pokemon.captureRate
+        description.text = "Description: \n" + pokemon.description
+
+    }
 
 }

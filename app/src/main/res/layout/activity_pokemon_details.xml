@@ -32,6 +32,13 @@
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view" />
 
+    <Button
+        android:id="@+id/buttonDelete"
+        style="@style/detail_button"
+        android:text="Delete"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view" />
+
     <ImageView
         android:id="@+id/pokemonImage"
         style="@style/image_pokemon_details"

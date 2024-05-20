@@ -12,5 +12,6 @@ data class Pokemon(
     val color : String,
     val captureRate : String,
     val description : String,
-    val imageUrl : String
+    val imageUrl : String,
+    var saved : Boolean
 )

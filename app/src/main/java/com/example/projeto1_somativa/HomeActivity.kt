@@ -98,7 +98,7 @@ class HomeActivity : AppCompatActivity() {
         val description = JSONObject(bodyPokemonDescription).getJSONArray("flavor_text_entries").getJSONObject(0).getString("flavor_text").replace("\n", " ")
         val captureRate = JSONObject(bodyPokemonDescription).getString("capture_rate")
 
-        return Pokemon(name, type, color, captureRate, description, imageUrl)
+        return Pokemon(name, type, color, captureRate, description, imageUrl, false)
 
     }
 
