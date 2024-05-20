@@ -6,7 +6,7 @@ import retrofit2.http.Url
 
 interface PokeApi {
 
-    @GET("pokemon?limit=15")
+    @GET("pokemon?limit=4")
     suspend fun getUrl() : ResponseBody
 
     @GET
