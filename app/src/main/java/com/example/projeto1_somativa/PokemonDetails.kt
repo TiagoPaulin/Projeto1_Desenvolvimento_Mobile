@@ -1,5 +1,6 @@
 package com.example.projeto1_somativa
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -58,6 +59,14 @@ class PokemonDetails : AppCompatActivity() {
         var pokemon = Singleton.pokemonsRequest[position]
 
         loadData(pokemon)
+
+        homeButton.setOnClickListener {
+
+            val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("doRequest", false)
+            startActivity(intent)
+
+        }
 
         saveButton.setOnClickListener {
 

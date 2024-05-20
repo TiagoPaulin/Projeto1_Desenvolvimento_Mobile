@@ -31,7 +31,13 @@ class HomeActivity : AppCompatActivity() {
             insets
         }
 
-        requestApi()
+        val doRequest = intent.getBooleanExtra("doRequest", true)
+
+        if (doRequest) {
+
+            requestApi()
+
+        }
 
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
