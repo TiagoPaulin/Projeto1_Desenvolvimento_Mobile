@@ -89,6 +89,10 @@ class RegisterActivity : AppCompatActivity() {
 
             return "A senha deve conter no mínimo 8 caracteres e no máximo 20"
 
+        } else if (Singleton.requestUser(usernameValue) != null) {
+
+            return "Nome de usuário já cadastrado"
+
         }
 
         return "Cadastro realizado com sucesso!";
