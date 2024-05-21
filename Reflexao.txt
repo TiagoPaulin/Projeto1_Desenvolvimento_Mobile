@@ -1,0 +1,10 @@
+Grupo: Gabriel Felipe Jess Meira - Tiago Vieira Paulin
+
+1. Link do repositório com a implementação do projeto:
+R: https://github.com/TiagoPaulin/Projeto1_Desenvolvimento_Mobile
+
+2. Escreva uma reflexão sobre o seu aprendizado até o momento. Você conseguiu entender a arquitetura do Android? Consegue entender o processo básico de desenvolvimento de apps Android?
+R: A implementação  projeto foi difícil em algumas partes porém foi um processo essencial para  a melhor compreensão dos assuntos que foram vistos em sala de aula por meio do exercício eles. No geral o trabalho foi bom para aprofundar no conteúdo e entender melhor sobre o desenvolvimento de aplicativos android
+
+3. Tem alguma sugestão em relação ao formato das aulas até aqui? O que você está gostando e o que não está gostando? Tem sugestões de melhoria?
+R: Acho o formato das aulas bem eficiente, onde o conteúdo é passado com uma atividade prática em seguida ajuda muito na fixação. Não necessita de mudanças ao meu ver
