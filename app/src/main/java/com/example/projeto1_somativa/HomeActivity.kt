@@ -44,17 +44,17 @@ class HomeActivity : AppCompatActivity() {
 
         if (isRequest) {
 
-            binding.buttonSwitchList.text = "Visualizar Favoritos"
+            binding.buttonSwitchList.text = "Favorites"
             list = "R"
 
         } else {
 
-            binding.buttonSwitchList.text = "Visualizar Todos"
-//            if (pokemonList.isEmpty()) {
-//
-//                showMessage()
-//
-//            }
+            binding.buttonSwitchList.text = "All Results"
+            if (Singleton.pokemonsData.isEmpty()) {
+
+                showMessage()
+
+            }
             list = "D"
 
         }
@@ -81,6 +81,14 @@ class HomeActivity : AppCompatActivity() {
         binding.buttonSwitchList.setOnClickListener {
 
             switchList(isRequest)
+
+        }
+
+        binding.buttonLogout.setOnClickListener {
+
+            viewModel.logout()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
 
         }
 

@@ -122,4 +122,11 @@ class HomeViewModel : ViewModel() {
 
     }
 
+    fun logout(){
+
+        Singleton.pokemonsRequest = mutableListOf()
+        pokemonLiveData.value = Singleton.pokemonsRequest
+
+    }
+
 }
