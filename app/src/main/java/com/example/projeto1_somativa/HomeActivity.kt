@@ -3,6 +3,7 @@ package com.example.projeto1_somativa
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -57,6 +58,11 @@ class HomeActivity : AppCompatActivity() {
 
             binding.buttonSwitchList.text = "Visualizar Todos"
             pokemonList = Singleton.pokemonsData
+            if (pokemonList.isEmpty()) {
+
+                showMessage()
+
+            }
             list = "D"
 
         }
@@ -181,6 +187,24 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
+
+    }
+
+    private fun showMessage(){
+
+        val builder = AlertDialog.Builder(this);
+
+        builder.setTitle("MENSAGEM");
+        builder.setMessage("Você não possui nenhum pokemon favoritado");
+        builder.setPositiveButton("OK") { dialog, _ ->
+
+            switchList(false)
+
+        }
+
+        val dialog = builder.create();
+
+        dialog.show();
 
     }
 
