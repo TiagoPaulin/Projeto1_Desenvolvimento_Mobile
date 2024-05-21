@@ -49,4 +49,10 @@ object Singleton {
 
     }
 
+    fun requestPokemon(name : String) : Pokemon {
+
+         return pokemonDao.getByName(name)
+
+    }
+
 }

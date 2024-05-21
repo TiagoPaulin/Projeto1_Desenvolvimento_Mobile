@@ -100,36 +100,47 @@ class HomeActivity : AppCompatActivity() {
         val bodyPokemon = responseBodyPokemon.string()
 
         val name = JSONObject(bodyPokemon).getJSONArray("forms").getJSONObject(0).getString("name")
-        val imageUrl = JSONObject(bodyPokemon).getJSONObject("sprites").getString("front_default")
 
-        val responseBodyPokemonType = api.getPokemonType("https://pokeapi.co/api/v2/pokemon/" + name)
-        val bodyPokemonType = responseBodyPokemonType.string()
+        val pokemon = Singleton.requestPokemon(name)
 
-        val typesArray = JSONObject(bodyPokemonType).getJSONArray("types")
-        val typeStringBuilder = StringBuilder()
+        if (pokemon != null) {
 
-        for (i in 0 until typesArray.length()) {
+            return pokemon
 
-            val typeName = typesArray.getJSONObject(i).getJSONObject("type").getString("name")
-            typeStringBuilder.append(typeName)
+        } else {
 
-            if (i < typesArray.length() - 1) {
-                typeStringBuilder.append(" | ")
+            val imageUrl = JSONObject(bodyPokemon).getJSONObject("sprites").getString("front_default")
+
+            val responseBodyPokemonType = api.getPokemonType("https://pokeapi.co/api/v2/pokemon/" + name)
+            val bodyPokemonType = responseBodyPokemonType.string()
+
+            val typesArray = JSONObject(bodyPokemonType).getJSONArray("types")
+            val typeStringBuilder = StringBuilder()
+
+            for (i in 0 until typesArray.length()) {
+
+                val typeName = typesArray.getJSONObject(i).getJSONObject("type").getString("name")
+                typeStringBuilder.append(typeName)
+
+                if (i < typesArray.length() - 1) {
+                    typeStringBuilder.append(" | ")
+                }
+
             }
 
+            val type = typeStringBuilder.toString()
+            val urlDescription = JSONObject(bodyPokemonType).getJSONObject("species").getString("url")
+
+            val responseBodyPokemonDescription = api.getPokemonDescription(urlDescription)
+            val bodyPokemonDescription = responseBodyPokemonDescription.string()
+
+            val color = JSONObject(bodyPokemonDescription).getJSONObject("color").getString("name")
+            val description = JSONObject(bodyPokemonDescription).getJSONArray("flavor_text_entries").getJSONObject(0).getString("flavor_text").replace("\n", " ")
+            val captureRate = JSONObject(bodyPokemonDescription).getString("capture_rate")
+
+            return Pokemon(name, type, color, captureRate, description, imageUrl, false)
+
         }
-
-        val type = typeStringBuilder.toString()
-        val urlDescription = JSONObject(bodyPokemonType).getJSONObject("species").getString("url")
-
-        val responseBodyPokemonDescription = api.getPokemonDescription(urlDescription)
-        val bodyPokemonDescription = responseBodyPokemonDescription.string()
-
-        val color = JSONObject(bodyPokemonDescription).getJSONObject("color").getString("name")
-        val description = JSONObject(bodyPokemonDescription).getJSONArray("flavor_text_entries").getJSONObject(0).getString("flavor_text").replace("\n", " ")
-        val captureRate = JSONObject(bodyPokemonDescription).getString("capture_rate")
-
-        return Pokemon(name, type, color, captureRate, description, imageUrl, false)
 
     }
 
