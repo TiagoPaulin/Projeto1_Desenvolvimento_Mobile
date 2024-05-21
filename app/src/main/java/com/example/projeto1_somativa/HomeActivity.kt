@@ -23,6 +23,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var pokemonAdapter : PokemonAdapter
 
     private lateinit var pokemonList : MutableList<Pokemon>
+    private lateinit var list : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,11 +51,13 @@ class HomeActivity : AppCompatActivity() {
 
             binding.buttonSwitchList.text = "Visualizar Favoritos"
             pokemonList = Singleton.pokemonsRequest
+            list = "R"
 
         } else {
 
             binding.buttonSwitchList.text = "Visualizar Todos"
             pokemonList = Singleton.pokemonsData
+            list = "D"
 
         }
 
@@ -68,7 +71,7 @@ class HomeActivity : AppCompatActivity() {
         recyclerView.layoutManager = GridLayoutManager(this, 2);
         recyclerView.setHasFixedSize(true)
 
-        pokemonAdapter = PokemonAdapter(this, pokemonList)
+        pokemonAdapter = PokemonAdapter(this, pokemonList, list)
         recyclerView.adapter = pokemonAdapter
 
     }

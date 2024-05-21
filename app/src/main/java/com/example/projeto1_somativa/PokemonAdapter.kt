@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.projeto1_somativa.databinding.PokemonItemBinding
 import com.example.projeto1_somativa.model.Pokemon
 
-class PokemonAdapter(private val context : Context, private val pokemonList : MutableList<Pokemon>) :
+class PokemonAdapter(private val context : Context, private val pokemonList : MutableList<Pokemon>, val list : String) :
     RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>() {
 
     inner class PokemonViewHolder(binding : PokemonItemBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -22,6 +22,7 @@ class PokemonAdapter(private val context : Context, private val pokemonList : Mu
 
                 val intent = Intent(context, PokemonDetails::class.java)
                 intent.putExtra("position", position)
+                intent.putExtra("list", list)
                 context.startActivity(intent)
 
             }

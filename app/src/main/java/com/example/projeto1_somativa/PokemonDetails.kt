@@ -31,6 +31,8 @@ class PokemonDetails : AppCompatActivity() {
 
     private  var position : Int = -1
 
+    private lateinit var pokemonList : MutableList<Pokemon>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -55,8 +57,19 @@ class PokemonDetails : AppCompatActivity() {
         nextButton = findViewById(R.id.buttonNext)
 
         position = intent.getIntExtra("position", -1)
+        val list = intent.getStringExtra("list")
 
-        var pokemon = Singleton.pokemonsRequest[position]
+        if (list == "R") {
+
+            pokemonList = Singleton.pokemonsRequest
+
+        } else {
+
+            pokemonList = Singleton.pokemonsData
+
+        }
+
+        var pokemon = pokemonList[position]
 
         loadData(pokemon)
 
@@ -64,6 +77,9 @@ class PokemonDetails : AppCompatActivity() {
 
             val intent = Intent(this, HomeActivity::class.java)
             intent.putExtra("doRequest", false)
+            if (list == "D") {
+                intent.putExtra("isRequest", false)
+            }
             startActivity(intent)
 
         }
@@ -87,7 +103,7 @@ class PokemonDetails : AppCompatActivity() {
         backButton.setOnClickListener {
 
             position = position - 1
-            pokemon = Singleton.pokemonsRequest[position]
+            pokemon = pokemonList[position]
             buttonVisibility(pokemon)
             loadData(pokemon)
 
@@ -96,7 +112,7 @@ class PokemonDetails : AppCompatActivity() {
         nextButton.setOnClickListener {
 
             position = position + 1
-            pokemon = Singleton.pokemonsRequest[position]
+            pokemon = pokemonList[position]
             buttonVisibility(pokemon)
             loadData(pokemon)
 
@@ -109,7 +125,7 @@ class PokemonDetails : AppCompatActivity() {
 
             backButton.visibility = View.INVISIBLE
 
-        } else if(0 < position && position < Singleton.pokemonsRequest.size - 1) {
+        } else if(0 < position && position < pokemonList.size - 1) {
 
             backButton.visibility = View.VISIBLE
             nextButton.visibility = View.VISIBLE
