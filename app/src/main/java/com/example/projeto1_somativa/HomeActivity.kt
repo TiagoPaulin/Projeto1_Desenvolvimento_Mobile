@@ -107,7 +107,7 @@ class HomeActivity : AppCompatActivity() {
 
         val name = JSONObject(bodyPokemon).getJSONArray("forms").getJSONObject(0).getString("name")
 
-        val pokemon = Singleton.requestPokemon(name)
+        val pokemon = Singleton.requestPokemon(name, Singleton.id)
 
         if (pokemon != null) {
 
@@ -144,7 +144,7 @@ class HomeActivity : AppCompatActivity() {
             val description = JSONObject(bodyPokemonDescription).getJSONArray("flavor_text_entries").getJSONObject(0).getString("flavor_text").replace("\n", " ")
             val captureRate = JSONObject(bodyPokemonDescription).getString("capture_rate")
 
-            return Pokemon(name, type, color, captureRate, description, imageUrl, false)
+            return Pokemon(0,name, type, color, captureRate, description, imageUrl, false, Singleton.id)
 
         }
 

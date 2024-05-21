@@ -10,14 +10,14 @@ object Singleton {
     private lateinit var userDao : UserDao
     private lateinit var pokemonDao : PokemonDao
 
+    var id : Int = -1
+
     fun setContext(context: Context){
 
         AppDatabase.getInstance(context)?.apply {
 
             userDao = userDao()
             pokemonDao = pokemonDao()
-
-            pokemonsData = pokemonDao.getAll()
 
         }
 
@@ -38,20 +38,27 @@ object Singleton {
     fun addPokemon(pokemon : Pokemon){
 
         pokemonDao.insert(pokemon)
-        pokemonsData = pokemonDao.getAll()
+        pokemonsData = pokemonDao.getAllByUserId(id)
 
     }
 
     fun deletePokemon(pokemon : Pokemon){
 
         pokemonDao.delete(pokemon)
-        pokemonsData = pokemonDao.getAll()
+        pokemonsData = pokemonDao.getAllByUserId(id)
 
     }
 
-    fun requestPokemon(name : String) : Pokemon {
+    fun requestPokemon(name : String, id : Int) : Pokemon {
 
-         return pokemonDao.getByName(name)
+         return pokemonDao.getByName(name, id)
+
+    }
+
+    fun requestPokemonByUser(userId : Int) {
+
+        id = userId
+        pokemonsData =  pokemonDao.getAllByUserId(userId)
 
     }
 

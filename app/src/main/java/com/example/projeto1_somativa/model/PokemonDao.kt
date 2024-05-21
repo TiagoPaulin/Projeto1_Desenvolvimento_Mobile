@@ -14,8 +14,11 @@ interface PokemonDao {
     @Query("SELECT * FROM table_pokemon")
     fun getAll() : MutableList<Pokemon>
 
-    @Query("SELECT * FROM TABLE_POKEMON WHERE name = :name")
-    fun getByName(name : String) : Pokemon
+    @Query("SELECT * FROM TABLE_POKEMON WHERE name = :name AND userId = :userId")
+    fun getByName(name : String, userId : Int) : Pokemon
+
+    @Query("SELECT * FROM table_pokemon WHERE userId = :id")
+    fun getAllByUserId(id : Int) : MutableList<Pokemon>
 
     @Delete
     fun delete(pokemon : Pokemon) : Int

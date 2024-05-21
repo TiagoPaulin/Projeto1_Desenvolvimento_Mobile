@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.projeto1_somativa.model.Singleton
+import com.example.projeto1_somativa.model.User
 
 class MainActivity : AppCompatActivity() {
 
@@ -88,6 +89,7 @@ class MainActivity : AppCompatActivity() {
 
         if (user != null && user.password == passwordValue){
 
+            Singleton.requestPokemonByUser(user.id)
             return true;
 
         }
