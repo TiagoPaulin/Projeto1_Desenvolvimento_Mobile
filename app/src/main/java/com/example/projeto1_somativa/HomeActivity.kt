@@ -1,5 +1,6 @@
 package com.example.projeto1_somativa
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -19,7 +20,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityHomeBinding
-    private lateinit var pokemonAdapter: PokemonAdapter
+    private lateinit var pokemonAdapter : PokemonAdapter
+
+    private lateinit var pokemonList : MutableList<Pokemon>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +34,11 @@ class HomeActivity : AppCompatActivity() {
             insets
         }
 
-        val doRequest = intent.getBooleanExtra("doRequest", true)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val doRequest = intent.getBooleanExtra("doRequest", false)
+        val isRequest = intent.getBooleanExtra("isRequest", true)
 
         if (doRequest) {
 
@@ -39,14 +46,29 @@ class HomeActivity : AppCompatActivity() {
 
         }
 
-        binding = ActivityHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        if (isRequest) {
+
+            binding.buttonSwitchList.text = "Visualizar Favoritos"
+            pokemonList = Singleton.pokemonsRequest
+
+        } else {
+
+            binding.buttonSwitchList.text = "Visualizar Todos"
+            pokemonList = Singleton.pokemonsData
+
+        }
+
+        binding.buttonSwitchList.setOnClickListener {
+
+            switchList(isRequest)
+
+        }
 
         val recyclerView = binding.recyclerViewPokemon
         recyclerView.layoutManager = GridLayoutManager(this, 2);
         recyclerView.setHasFixedSize(true)
 
-        pokemonAdapter = PokemonAdapter(this, Singleton.pokemonsRequest)
+        pokemonAdapter = PokemonAdapter(this, pokemonList)
         recyclerView.adapter = pokemonAdapter
 
     }
@@ -127,6 +149,25 @@ class HomeActivity : AppCompatActivity() {
             Singleton.pokemonsRequest.addAll(pokemons)
             pokemonAdapter.notifyDataSetChanged()
         }
+    }
+
+    private fun switchList(isRequest : Boolean) {
+
+        if (isRequest) {
+
+            val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("isRequest", false)
+            startActivity(intent)
+
+        } else {
+
+            val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("isRequest", true)
+            intent.putExtra("doRequest", false)
+            startActivity(intent)
+
+        }
+
     }
 
 }

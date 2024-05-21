@@ -107,6 +107,7 @@ class MainActivity : AppCompatActivity() {
     private fun navigateToHome(){
 
         val intent = Intent(this, HomeActivity::class.java);
+        intent.putExtra("doRequest", true)
         startActivity(intent);
 
     }

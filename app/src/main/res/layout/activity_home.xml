@@ -9,6 +9,14 @@
     android:background="@drawable/backround"
     tools:context=".HomeActivity">
 
+    <Button
+        android:id="@+id/buttonSwitchList"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_margin="20dp"
+        android:text="Visualizar Salvos"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/blue_button" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewPokemon"
@@ -16,4 +24,5 @@
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="2"/>
+
 </LinearLayout>
